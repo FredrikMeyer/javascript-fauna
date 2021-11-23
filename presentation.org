@@ -110,4 +110,40 @@ React is a Javascript library for building user interfaces.
 
 The idea is that you build your UI out of *components*. A component can have internal state and "props" that are properties that are passed from other components.
 
+Example:
+#+begin_src js
+function Button({color}) {
+  const [clicked, setClicked] = React.useState(false)
+
+  return <button style={{color: color}} onClick={ () => setClicked(true)}>
+    { clicked ? "I have been clicked" : "I have not been clicked" }
+  </button>
+}
+#+end_src
+
+^ go through above example.
+
+See the project in [[file:example-2-simple-react/][example-2]]. <- go through this.
+
+It can be run by running =npm install= and then =npm run dev=. Then you can open a browser in =localhost:3000=.
+
+The project was set up by using the [[https://vitejs.dev/guide/#scaffolding-your-first-vite-project][scaffolding script]] from Vite.
+
 ** Introduction to the fauna in a production app
+
+The previous example showed how easy it was to get a simple React app up and running.
+
+There are several things we might want to add in a production app:
+
+ - Linting and formatting (provided by *eslint* and *prettier*)
+ - Typechecking (an extra command provided by *typescript*)
+ - A component library (I will use [[https://mui.com/][mui]]).
+
+   (say a little bit about all of these)
+
+
+ 
+** A Real World Demo
+
+See the files in [[file:example-3-production-app/]]. 
+
