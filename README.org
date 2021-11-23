@@ -18,7 +18,8 @@ Here is a sketch of the structure of the talk:
  1. Intro (this)
  2. Introduction to Javascript
  3. Introduction to React
- 4. Introduction to a simple app
+ 4. Introduction to the ecosystem
+ 5. Introduction to a simple app
 
 #+ATTR_ORG: :width 600px
 [[./JS Fauna.png]]
@@ -26,11 +27,11 @@ Here is a sketch of the structure of the talk:
 ** Introduction to Javascript
 
 *** Introduction
-Made by Brendan Eich while working at Netscape in 1995.
+Made by [[https://en.wikipedia.org/wiki/Brendan_Eich][Brendan Eich]] while working at Netscape in 1995.
 
 Semantics is inspired from Scheme, but the syntax is inspired by Java (which was popular at the time).
 
-It is a prototype based language, which is a style of object-oriented programming different from the usual one with classes and inheritance. Instead, objects inherit from "prototypes".
+It is a [[https://en.wikipedia.org/wiki/Prototype-based_programming][prototype based language]], which is a style of object-oriented programming different from the usual one with classes and inheritance. Instead, objects inherit from "prototypes".
 
 Here is an example:
 
@@ -45,7 +46,8 @@ function sumUsPlease(x, y) {
 console.log(sumUsPlease(a,b))
 #+end_src
 
-Here we modify the `Array` prototype:
+Here we modify the ==Array= prototype:
+
 #+begin_src js
 Array.prototype.altSum = function() {
   let s = 0;
@@ -60,29 +62,25 @@ return [1,2,3].altSum()
 
 Changing the prototypes of global objects is generally frowned upon though (and is one of the most [[https://portswigger.net/daily-swig/prototype-pollution-the-dangerous-and-underrated-vulnerability-impacting-javascript-applications][common security risks]]).
 
-However, pure JS is kinda useless. What gives it its utility is that it can interact with the browser DOM.
+However, pure JS is not very fun. What gives it its utility is that it can interact with the browser DOM and other browser API's (there are API's for accessing web camera, audio interfaces, position, and much more).
 
 *** The Document Object Model (DOM) and manipulating it
 
-In one sentence: the DOM is the browser's model of the web page it is showing.
+In one sentence: [[https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction][the DOM]] is the browser's model of the web page it is showing.
 
 It can be manipulated by Javascript.
 
-Example in [[file:example-1-dom-manipulation/index.html][this file]]. Open it in a browser. (note to self: go through this file)
+Example in [[file:example-1-dom-manipulation/index.html][this file]]. Open it in a browser and compare with the source code.
 
 This is an example of making something with pure JS, no extra type system, no build system, no packages, and so on.
 
 This is good enough for very small apps, but for larger apps, we would want to use packages that provide ready-made good looking components, for example.
 
+** Introducing Typescript
 
+In Javascript, anything goes. There is no enforced type system anywhere. A type system is useful for editor integration (better auto-complete, for example) and early catching of errors. Ideally, one would use the type system to avoid impossible states.
 
-
-
-https://api.met.no/weatherapi/locationforecast/2.0/
-
-** Introduction to Typescript
-
-Typescript is basically "just" type annotations for Javascript.
+[[https://www.typescriptlang.org/][Typescript]], developed by Microsoft, is basically "just" type annotations for Javascript.
 
 But technically it is another language that can be compiled to Javascript.
 
@@ -96,7 +94,7 @@ function a(a,b) {
 
 
 We can write
-#+begin_src js
+#+begin_src typescript
 function a(a: string, b: string): string {
   return a + b
 }
@@ -104,9 +102,11 @@ function a(a: string, b: string): string {
 
 Typescript is much more than this, and in fact its type system is [[https://github.com/microsoft/TypeScript/issues/14833][Turing complete]].
 
+Nowadays, almost all large Javascript projects would choose to use Typescript (or sometimes its somewhat older competitor [[https://flow.org/][Flow]], developed by Facebook).
+
 ** Introduction to React
 
-React is a Javascript library for building user interfaces.
+[[https://reactjs.org/][React]], developed by Facebook, is a Javascript library for building user interfaces.
 
 The idea is that you build your UI out of *components*. A component can have internal state and "props" that are properties that are passed from other components.
 
@@ -121,9 +121,7 @@ function Button({color}) {
 }
 #+end_src
 
-^ go through above example.
-
-See the project in [[file:example-2-simple-react/][example-2]]. <- go through this.
+See the project in [[file:example-2-simple-react/][example-2]] and the associated code.
 
 It can be run by running =npm install= and then =npm run dev=. Then you can open a browser in =localhost:3000=.
 
@@ -135,15 +133,36 @@ The previous example showed how easy it was to get a simple React app up and run
 
 There are several things we might want to add in a production app:
 
- - Linting and formatting (provided by *eslint* and *prettier*)
- - Typechecking (an extra command provided by *typescript*)
- - A component library (I will use [[https://mui.com/][mui]]).
+*** Linting
 
-   (say a little bit about all of these)
+Linting is the automated checking of your source code for programmatic and stylistic errors. In the Javascript fauna, the most used linter is [[https://eslint.org/][eslint]].
 
+It catched things like doing `console.log` in code, warns you about unused code, and so on.
 
- 
+*** Formatting
+
+In my opinion, if there ever are style discussions in a code project, install an auto-formatter (and enforce it in the CI), and end the discussion there.
+
+A popular formatter in the Javascript world is [[https://prettier.io/][Prettier]].
+
+*** Typechecking
+
+Typescript, as already mentioned. Run typechecks by running =tsc --noEmit= in your project (the =noEmit= is to skip creating pure Javascript files from your Typescript files).
+
+*** Component Library
+
+Instead of writing all the HTML and CSS yourself, you will save *a lot* of time by using a component library.
+
+For React, there are several popular ones:
+ - [[https://mui.com][MUI]] (formerly Material UI)
+ - [[https://chakra-ui.com/][Chakra UI]]
+ - [[https://ant.design/][Ant Design]]
+
+I will be using MUI in my example below.
+
 ** A Real World Demo
 
-See the files in [[file:example-3-production-app/]]. 
+See the files in [[file:example-3-production-app/]].
+
+This is a project with Typescript, React and Material UI.
 
