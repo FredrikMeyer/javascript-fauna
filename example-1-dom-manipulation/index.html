@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title of page</title>
+    </head>
+    <body>
+        <h1 id="myheader">Some headline</h1>
+        <button id="mybutton">Click Me</button>
+        <script type="application/javascript">
+         const headlines = ["Another headline", "Emacs is best", "Infinity is big"]
+
+         // Get the header element
+         const header = document.getElementById("myheader")
+
+         // Get the button element
+         const button = document.getElementById("mybutton")
+
+         // Make the button do something
+         button.onclick = function() {
+           header.innerHTML = headlines[Math.floor(Math.random()*3)]
+         }
+        </script>
+    </body>
+</html>
+

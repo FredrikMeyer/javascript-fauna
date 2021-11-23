@@ -1,0 +1,113 @@
+#+TITLE: Intro til JS 
+#+STARTUP: inlineimages
+
+* Intro til JS Fauna
+
+** Goal
+Have some idea on how building a JS app works and some hints on getting started.
+
+** Learning a language is easy, learning the ecosystem is hard
+
+I will try to give an overview of how a modern JS app work, from coding to production.
+
+That will mean a intro to the language itself, but also some words about the tools that are used.
+
+The goal is to build a simple React app showing some simple graphs of real data.
+
+Here is a sketch of the structure of the talk:
+ 1. Intro (this)
+ 2. Introduction to Javascript
+ 3. Introduction to React
+ 4. Introduction to a simple app
+
+#+ATTR_ORG: :width 600px
+[[./JS Fauna.png]]
+
+** Introduction to Javascript
+
+*** Introduction
+Made by Brendan Eich while working at Netscape in 1995.
+
+Semantics is inspired from Scheme, but the syntax is inspired by Java (which was popular at the time).
+
+It is a prototype based language, which is a style of object-oriented programming different from the usual one with classes and inheritance. Instead, objects inherit from "prototypes".
+
+Here is an example:
+
+#+begin_src js
+const a = 2;
+const b = 3;
+
+function sumUsPlease(x, y) {
+  return x + y;
+}
+
+console.log(sumUsPlease(a,b))
+#+end_src
+
+Here we modify the `Array` prototype:
+#+begin_src js
+Array.prototype.altSum = function() {
+  let s = 0;
+  for (let i = 0; i < this.length; i++) {
+    s += Math.pow(-1, i) * this[i]
+  }
+  return s
+}
+
+return [1,2,3].altSum()
+#+end_src
+
+Changing the prototypes of global objects is generally frowned upon though (and is one of the most [[https://portswigger.net/daily-swig/prototype-pollution-the-dangerous-and-underrated-vulnerability-impacting-javascript-applications][common security risks]]).
+
+However, pure JS is kinda useless. What gives it its utility is that it can interact with the browser DOM.
+
+*** The Document Object Model (DOM) and manipulating it
+
+In one sentence: the DOM is the browser's model of the web page it is showing.
+
+It can be manipulated by Javascript.
+
+Example in [[file:example-1-dom-manipulation/index.html][this file]]. Open it in a browser. (note to self: go through this file)
+
+This is an example of making something with pure JS, no extra type system, no build system, no packages, and so on.
+
+This is good enough for very small apps, but for larger apps, we would want to use packages that provide ready-made good looking components, for example.
+
+
+
+
+
+https://api.met.no/weatherapi/locationforecast/2.0/
+
+** Introduction to Typescript
+
+Typescript is basically "just" type annotations for Javascript.
+
+But technically it is another language that can be compiled to Javascript.
+
+So instead of this:
+
+#+begin_src js
+function a(a,b) {
+  return a + b
+}
+#+end_src
+
+
+We can write
+#+begin_src js
+function a(a: string, b: string): string {
+  return a + b
+}
+#+end_src
+
+Typescript is much more than this, and in fact its type system is [[https://github.com/microsoft/TypeScript/issues/14833][Turing complete]].
+
+** Introduction to React
+
+React is a Javascript library for building user interfaces.
+
+The idea is that you build your UI out of *components*. A component can have internal state and "props" that are properties that are passed from other components.
+
+** Introduction to the fauna in a production app
