@@ -1,21 +1,7 @@
-import { Container, Typography } from "@mui/material";
-import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-} from "recharts";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-import { fetchForecast, ResponseType } from "./helper";
+* featureToDataArray
 
+#+begin_src js
 function featureToDataArray(
   data: ResponseType,
   feature: string
@@ -27,7 +13,11 @@ function featureToDataArray(
     val: e.data.instant.details[feature],
   }));
 }
+#+end_src
 
+* Graph react component
+
+#+begin_src js
 function Graph({ data }: { data: { time: Date; val: number }[] }) {
   return (
     <LineChart
@@ -53,7 +43,11 @@ function Graph({ data }: { data: { time: Date; val: number }[] }) {
     </LineChart>
   );
 }
+#+end_src
 
+* App component
+
+#+begin_src js
 function App() {
   const latOslo = 59.911491;
   const longOslo = 10.757933;
@@ -118,5 +112,4 @@ function App() {
     </Container>
   );
 }
-
-export default App;
+#+end_src
