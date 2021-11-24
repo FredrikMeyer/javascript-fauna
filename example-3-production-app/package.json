@@ -5,7 +5,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "eslint --ext .ts,.js,.tsx,.jsx src"
+    "lint": "eslint --ext .ts,.js,.tsx,.jsx src",
+    "typecheck": "tsc --noEmit",
+    "prettier": "prettier src --check"
   },
   "dependencies": {
     "@emotion/react": "^11.6.0",
