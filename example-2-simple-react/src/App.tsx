@@ -11,7 +11,8 @@ function Button() {
 function App() {
   return (
     <main>
-        <h1>Some header</h1>
+        <h1>Some Header</h1>
+        <Button />
         <Button />
     </main>
   )

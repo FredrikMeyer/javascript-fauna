@@ -10,7 +10,7 @@ Have some idea on how building a JS app works and some hints on getting started.
 
 I will try to give an overview of how a modern JS app work, from coding to production.
 
-That will mean a intro to the language itself, but also some words about the tools that are used.
+That will not mean a intro to the language itself, but also some words about the tools that are used.
 
 The goal is to build a simple React app showing some simple graphs of real data.
 
@@ -21,7 +21,7 @@ Here is a sketch of the structure of the talk:
  4. Introduction to the ecosystem
  5. Introduction to a simple app
 
-#+ATTR_ORG: :width 600px
+#+ATTR_ORG: :width 1000px
 [[./JS Fauna.png]]
 
 ** Introduction to Javascript
@@ -46,7 +46,11 @@ function sumUsPlease(x, y) {
 console.log(sumUsPlease(a,b))
 #+end_src
 
-Here we modify the ==Array= prototype:
+#+RESULTS:
+: 5
+: undefined
+
+Here we modify the =Array= prototype:
 
 #+begin_src js
 Array.prototype.altSum = function() {
@@ -59,6 +63,9 @@ Array.prototype.altSum = function() {
 
 return [1,2,3].altSum()
 #+end_src
+
+#+RESULTS:
+: 2
 
 Changing the prototypes of global objects is generally frowned upon though (and is one of the most [[https://portswigger.net/daily-swig/prototype-pollution-the-dangerous-and-underrated-vulnerability-impacting-javascript-applications][common security risks]]).
 
@@ -95,7 +102,7 @@ function a(a,b) {
 
 We can write
 #+begin_src typescript
-function a(a: string, b: string): string {
+function someFunction(a: string, b: string): string {
   return a + b
 }
 #+end_src
@@ -166,3 +173,10 @@ See the files in [[file:example-3-production-app/]].
 
 This is a project with Typescript, React and Material UI.
 
+** Resources
+
+The official [[https://reactjs.org/tutorial/tutorial.html][React Intro]].
+
+[[https://developer.mozilla.org/en-US/docs/Web/HTML][MDN Mozilla Foundation docs]]. Excellent JS docs.
+
+[[https://mui.com/getting-started/usage/][MUI]] documentation. Excellent.
