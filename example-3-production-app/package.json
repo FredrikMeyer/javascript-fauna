@@ -18,7 +18,7 @@
     "recharts": "^2.1.14"
   },
   "devDependencies": {
-    "@types/react": "^18.0.21",
+    "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.39.0",
