@@ -10,7 +10,7 @@ jobs:
         working-directory: ./example-3-production-app
     strategy:
       matrix:
-        node-version: [14]
+        node-version: [20]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
