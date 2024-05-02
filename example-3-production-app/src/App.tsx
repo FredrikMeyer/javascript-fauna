@@ -18,7 +18,7 @@ import { fetchForecast, ResponseType } from "./helper";
 
 function featureToDataArray(
   data: ResponseType,
-  feature: string
+  feature: string,
 ): { time: Date; val: number }[] {
   const timeseries = data.properties.timeseries;
 

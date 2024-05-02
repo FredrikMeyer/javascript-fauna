@@ -19,7 +19,7 @@ export interface ResponseType {
  */
 export async function fetchForecast(
   lat: number,
-  long: number
+  long: number,
 ): Promise<ResponseType | undefined> {
   const queryParams = new URLSearchParams({
     lat: lat.toString(),
@@ -31,7 +31,7 @@ export async function fetchForecast(
       headers: {
         "User-Agent": "fredrik meyer",
       },
-    }
+    },
   );
 
   try {
