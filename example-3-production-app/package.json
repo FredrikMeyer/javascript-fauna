@@ -7,7 +7,8 @@
     "serve": "vite preview",
     "lint": "eslint --ext .ts,.js,.tsx,.jsx src",
     "typecheck": "tsc --noEmit",
-    "prettier": "prettier src --check"
+    "prettier": "prettier src --check",
+    "prettier:write": "prettier src --write"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

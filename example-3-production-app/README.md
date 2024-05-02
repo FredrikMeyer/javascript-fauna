@@ -37,6 +37,18 @@ npm install @mui/material @emotion/react @emotion/styled
 
 Follow instructions [here](https://prettier.io/docs/en/install.html).
 
+Run
+
+```
+npm run prettier
+```
+to check.
+
+To fix, run:
+```
+npm run prettier:write
+```
+
 ## recharts
 
 Follow instructions [in docs](https://recharts.org/en-US/guide).

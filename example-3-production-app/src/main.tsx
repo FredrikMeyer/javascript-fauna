@@ -17,6 +17,6 @@ if (container) {
         <CssBaseline />
         <App />
       </ThemeProvider>
-    </React.StrictMode>
+    </React.StrictMode>,
   );
 }
