@@ -6,10 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/example-2-simple-react" # Location of package manifests
-    schedule:
-      interval: "monthly"
-  - package-ecosystem: "npm" # See documentation for possible values
     directory: "/example-3-production-app" # Location of package manifests
     schedule:
       interval: "monthly"
+    groups:
+      npm:
+        patterns:
+           - '*'
